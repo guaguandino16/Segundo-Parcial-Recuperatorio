@@ -1,0 +1,752 @@
+/* ==========================================================================
+   TOKENS
+   Medidas tomadas del diseño de Figma (frame de 1313,8px). El contenedor
+   mide 82rem = 1312px, así que los valores del diseño se mapean 1:1.
+   ========================================================================== */
+:root {
+    /* Color */
+    --color-negro: #000000;
+    --color-negro-suave: #0c0c0c;
+    --color-tarjeta: #121215;
+    --color-claro: #d9d9d9;
+    --color-blanco: #ffffff;
+    --color-texto-claro: #15161b;
+    --color-texto-oscuro: #a0a0ab;
+    --color-acento: #bbe5ff;
+    --color-borde-claro: rgba(255, 255, 255, 0.08);
+    --color-borde-oscuro: rgba(20, 20, 25, 0.16);
+
+    /* Tipografía */
+    --fuente-display: "Barlow", sans-serif;
+    --fuente-texto: -apple-system, "Segoe UI", Roboto, sans-serif;
+
+    /* Espaciado */
+    --space-1: 0.5rem;
+    --space-2: 0.75rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+    --space-6: 2.75rem;
+    --space-7: 4rem;
+
+    /* Radios */
+    --radio-pill: 62rem;
+    --radio-md: 1rem;
+    --radio-tarjeta: 2.24rem;
+    --radio-superior: 3.1rem;
+    --radio-inferior: 3.4rem;
+
+    /* Movimiento */
+    --ease-salida: cubic-bezier(0.16, 1, 0.3, 1);
+    --dur-rapida: 0.25s;
+    --dur-base: 0.5s;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    background-color: var(--color-negro);
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.48)),
+        url('../img/fondo.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: 7.74rem;
+    font-family: var(--fuente-texto);
+    color: var(--color-blanco);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Bloque contenedor: ancho máximo y centrado con flexbox (ver body) */
+.contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    max-width: 100rem;
+    width: 95%;
+    margin: 2.4rem 0;
+    border-radius: var(--radio-superior) var(--radio-superior) var(--radio-inferior) var(--radio-inferior);
+    overflow: hidden;
+}
+
+/* ==========================================================================
+   PORTADA: la barra de navegación va dentro de la portada, superpuesta
+   sobre la foto (sin position ni grid: es una columna flex)
+   ========================================================================== */
+.portada {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-negro-suave);
+}
+
+.portada--inicio {
+    min-height: 45.25rem;
+    padding-bottom: 2.84rem;
+    text-align: center;
+    background-image:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.66) 100%),
+        url('../img/lozano-hemmer.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.portada--obras {
+    min-height: 32rem;
+    padding-bottom: 2.84rem;
+    text-align: center;
+    background-image:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.75) 100%),
+        url('../img/lozano-hemmer-9.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.encabezado-sitio {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.navegacion-principal {
+    background-color: var(--color-negro-suave);
+    border-radius: 0 0 2.28rem 2.28rem;
+    padding: 1.02rem 2.96rem;
+}
+
+.navegacion-principal ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3) 3.75rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.enlace-nav {
+    color: var(--color-blanco);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.45rem;
+    text-decoration-thickness: 2px;
+    font-size: 1.32rem;
+    transition: color var(--dur-rapida) var(--ease-salida), text-decoration-color var(--dur-base) var(--ease-salida);
+}
+
+.enlace-nav:hover {
+    text-decoration-color: var(--color-blanco);
+}
+
+.enlace-nav.activo {
+    color: var(--color-acento);
+    text-decoration-color: var(--color-acento);
+}
+
+.hero-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.05rem;
+    padding: 0 var(--space-5);
+}
+
+.hero-titulo {
+    font-family: var(--fuente-display);
+    font-size: clamp(2.5rem, 8.55vw, 7.02rem);
+    font-weight: 700;
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    color: var(--color-claro);
+    margin: 0;
+}
+
+.hero-titulo em {
+    font-style: italic;
+}
+
+.hero-subtitulo {
+    font-size: clamp(1rem, 1.95vw, 1.6rem);
+    color: var(--color-blanco);
+    margin: 0;
+}
+
+/* ==========================================================================
+   BANDAS DE CONTENIDO
+   ========================================================================== */
+.area-contenido {
+    display: flex;
+    flex-direction: column;
+}
+
+.banda-clara {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-claro);
+    color: var(--color-texto-claro);
+    padding: 4.7rem 4rem 6.9rem;
+}
+
+.banda-oscura {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-negro);
+    padding: 8.25rem 4.55rem;
+}
+
+/* ==========================================================================
+   SECCIÓN "SOBRE MI"
+   ========================================================================== */
+/* Especificidad reforzada (.banda-clara + clase) a propósito: la regla
+   genérica ".banda-clara p" de más abajo tiene la misma especificidad que
+   ".cita-destacada p" y, al venir después en el archivo, le ganaba —
+   comprimía la cita a 44rem y rompía el centrado. Con ".banda-clara
+   .cita-destacada p" quedan por encima de cualquier ambigüedad de orden. */
+.banda-clara .etiqueta-seccion {
+    font-family: var(--fuente-display);
+    font-weight: 500;
+    font-size: 1.77rem;
+    line-height: 1.2;
+    margin: 0 0 6.9rem;
+}
+
+.cita-destacada {
+    align-self: center;
+    width: 100%;
+    max-width: 60.85rem;
+    text-align: center;
+    margin: 0 0 3.18rem;
+}
+
+.banda-clara .cita-destacada p {
+    font-family: var(--fuente-display);
+    font-weight: 500;
+    font-size: clamp(1.75rem, 5.6vw, 4.58rem);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    max-width: none;
+    width: 100%;
+    margin: 0;
+}
+
+.banda-clara .cita-autor {
+    align-self: center;
+    font-family: var(--fuente-display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1rem, 2.15vw, 1.77rem);
+    line-height: 1.2;
+    max-width: none;
+    text-align: center;
+    margin: 0;
+}
+
+/* ==========================================================================
+   TARJETAS EN 3 COLUMNAS IGUALES (solo flexbox)
+   ========================================================================== */
+.fila-columnas-iguales {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.05rem;
+}
+
+.fila-columnas-iguales .columna {
+    display: flex;
+    flex-direction: column;
+    gap: 1.38rem;
+    flex: 1 1 0;
+    min-width: 17rem;
+    min-height: 28.9rem;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde-claro);
+    border-radius: var(--radio-tarjeta);
+    padding: 1.84rem;
+    transition: border-color var(--dur-base) var(--ease-salida), transform var(--dur-base) var(--ease-salida);
+}
+
+.fila-columnas-iguales .columna:hover {
+    border-color: rgba(255, 255, 255, 0.24);
+    transform: translateY(-0.25rem);
+}
+
+.columna-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+}
+
+.columna-numero {
+    font-family: var(--fuente-display);
+    font-style: italic;
+    font-size: 2.07rem;
+    line-height: 1;
+    color: var(--color-acento);
+}
+
+.columna-etiqueta {
+    font-family: var(--fuente-display);
+    font-weight: 700;
+    font-size: 0.63rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: var(--color-negro);
+    background-color: var(--color-blanco);
+    border-radius: var(--radio-pill);
+    padding: 0.34rem 0.57rem;
+}
+
+.columna h2 {
+    font-family: var(--fuente-display);
+    font-weight: 600;
+    font-size: 1.59rem;
+    line-height: 1.1;
+    color: var(--color-blanco);
+    margin: 0;
+}
+
+.columna p {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    color: var(--color-texto-oscuro);
+    max-width: none;
+    margin: 0;
+}
+
+/* ==========================================================================
+   TIPOGRAFÍA DE LAS PÁGINAS INTERIORES
+   ========================================================================== */
+.banda-clara h1 {
+    font-family: var(--fuente-display);
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0 0 var(--space-6);
+}
+
+.banda-clara h2 {
+    font-family: var(--fuente-display);
+    font-weight: 600;
+    font-size: clamp(1.3rem, 2vw, 1.75rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin: 0 0 var(--space-3);
+}
+
+.banda-clara p {
+    color: #3a3b42;
+    margin: 0 0 var(--space-3);
+    max-width: 44rem;
+}
+
+/* ==========================================================================
+   LAYOUT DE 2 COLUMNAS DE DISTINTO ANCHO (solo flexbox)
+   ========================================================================== */
+.fila-columnas-asimetricas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-7);
+}
+
+.columna-principal {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    flex: 3 1 28rem;
+}
+
+.columna-lateral {
+    flex: 1 1 16rem;
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde-oscuro);
+    border-radius: var(--radio-tarjeta);
+    padding: var(--space-5);
+    align-self: flex-start;
+}
+
+/* ==========================================================================
+   LISTA DE CONCEPTOS Y GALERÍA
+   ========================================================================== */
+.lista-conceptos {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lista-conceptos li {
+    padding: var(--space-2) 0;
+    border-bottom: 1px solid var(--color-borde-oscuro);
+    transition: padding-left var(--dur-rapida) var(--ease-salida);
+}
+
+.lista-conceptos li:last-child {
+    border-bottom: none;
+}
+
+.lista-conceptos li::before {
+    content: "— ";
+}
+
+.lista-conceptos li:hover {
+    padding-left: var(--space-1);
+}
+
+.seccion-galeria h2 {
+    font-family: var(--fuente-display);
+    font-weight: 600;
+    font-size: clamp(1.3rem, 2vw, 1.75rem);
+    letter-spacing: -0.02em;
+    color: var(--color-blanco);
+    margin: 0 0 var(--space-5);
+}
+
+.galeria-obras {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.84rem;
+    min-height: 6rem;
+}
+
+.galeria-obras:empty::before {
+    content: "Galería en construcción — se genera con JavaScript en la próxima fase.";
+    color: var(--color-texto-oscuro);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.obra-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 15rem;
+    overflow: hidden;
+    background-color: var(--color-tarjeta);
+    border: 1px solid var(--color-borde-claro);
+    border-radius: var(--radio-tarjeta);
+    transition: border-color var(--dur-base) var(--ease-salida), transform var(--dur-base) var(--ease-salida);
+}
+
+.obra-card:hover {
+    border-color: rgba(255, 255, 255, 0.24);
+    transform: translateY(-0.25rem);
+}
+
+.obra-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.obra-info {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-2);
+    padding: 1.1rem 1.3rem;
+}
+
+.obra-info h3 {
+    font-family: var(--fuente-display);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    color: var(--color-blanco);
+    margin: 0;
+}
+
+.obra-info p {
+    font-family: var(--fuente-display);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--color-acento);
+    margin: 0;
+    max-width: none;
+}
+
+/* ==========================================================================
+   FORMULARIO DEL EJERCICIO
+   ========================================================================== */
+.banda-clara .instrucciones {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde-oscuro);
+    border-radius: var(--radio-tarjeta);
+    padding: var(--space-5);
+    max-width: none;
+}
+
+.formulario-ejercicio {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    margin-top: var(--space-6);
+}
+
+.formulario-ejercicio fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde-oscuro);
+    border-radius: var(--radio-tarjeta);
+    padding: var(--space-5);
+    margin: 0;
+}
+
+.formulario-ejercicio legend {
+    font-family: var(--fuente-display);
+    font-weight: 700;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--color-negro);
+    background-color: var(--color-claro);
+    border-radius: var(--radio-pill);
+    padding: 0.35rem 0.9rem;
+}
+
+.formulario-ejercicio label {
+    font-size: 0.9rem;
+    color: #3a3b42;
+}
+
+.formulario-ejercicio input {
+    width: 100%;
+    font-family: var(--fuente-texto);
+    font-size: 1rem;
+    color: var(--color-texto-claro);
+    background-color: var(--color-claro);
+    border: 1px solid transparent;
+    border-radius: var(--radio-md);
+    padding: var(--space-2) var(--space-3);
+    transition: border-color var(--dur-rapida) var(--ease-salida);
+}
+
+.formulario-ejercicio input:focus {
+    outline: none;
+    border-color: var(--color-negro);
+}
+
+.campos-obras {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.campos-obras:empty::before {
+    content: "Todavía no cargaste ninguna obra.";
+    color: #3a3b42;
+    font-size: 0.9rem;
+}
+
+.bloque-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+}
+
+button {
+    font-family: var(--fuente-display);
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-blanco);
+    background-color: var(--color-negro);
+    border: 1px solid var(--color-negro);
+    border-radius: var(--radio-pill);
+    padding: var(--space-2) var(--space-5);
+    cursor: pointer;
+    transition: transform var(--dur-rapida) var(--ease-salida), opacity var(--dur-rapida) var(--ease-salida);
+}
+
+button:hover:not(:disabled) {
+    transform: translateY(-0.15rem);
+}
+
+button:disabled {
+    color: #6c6d77;
+    background-color: transparent;
+    border-color: var(--color-borde-oscuro);
+    cursor: not-allowed;
+}
+
+#btn-reiniciar:not(:disabled) {
+    color: var(--color-negro);
+    background-color: transparent;
+}
+
+.resultados:not(:empty) {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-borde-oscuro);
+    border-radius: var(--radio-tarjeta);
+    padding: var(--space-5);
+    margin-top: var(--space-5);
+}
+
+/* ==========================================================================
+   PIE DE PÁGINA
+   ========================================================================== */
+.pie-sitio {
+    display: flex;
+    flex-direction: column;
+    gap: 6.25rem;
+    background-color: var(--color-claro);
+    color: var(--color-texto-claro);
+    padding: 5.9rem 1.7rem 7.5rem;
+    /* contenedor de consulta: el tamaño de la firma se calcula en cqw
+       (relativo al ancho real del pie), no en vw (relativo al viewport) —
+       así nunca se desborda aunque el contenedor tenga max-width */
+    container-type: inline-size;
+}
+
+.pie-superior {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--space-5);
+    padding: 0 1rem;
+}
+
+.pie-enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.57rem 3.75rem;
+    width: 21rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.pie-enlaces li {
+    flex: 0 0 5rem;
+}
+
+.pie-enlaces a {
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    font-size: 1.35rem;
+    transition: opacity var(--dur-rapida) var(--ease-salida);
+}
+
+.pie-enlaces a:hover {
+    opacity: 0.6;
+}
+
+.pie-contacto {
+    width: 17.86rem;
+    font-size: 1.6rem;
+    line-height: 1.25;
+    margin: 0;
+}
+
+.pie-contacto a {
+    color: var(--color-texto-claro);
+}
+
+.pie-firma {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: var(--fuente-display);
+    line-height: 0.78;
+    margin: 0;
+}
+
+.pie-firma-nombre {
+    font-weight: 700;
+    font-style: italic;
+    font-size: clamp(1.75rem, 11cqw, 7rem);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+}
+
+.pie-firma-apellido {
+    font-weight: 900;
+    /* un poco por debajo del ajuste exacto (~30.6cqw) a propósito: mejor
+       un par de puntos de aire a la derecha que arriesgar un recorte por
+       diferencias de métricas de fuente entre navegadores */
+    font-size: 28cqw;
+    line-height: 0.78;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   RESPONSIVIDAD
+   ========================================================================== */
+@media (max-width: 60rem) {
+    .banda-clara {
+        padding: 3.5rem 2rem 4.5rem;
+    }
+
+    .banda-oscura {
+        padding: 4rem 2rem;
+    }
+
+    .etiqueta-seccion {
+        margin-bottom: 3rem;
+    }
+
+    .cita-destacada {
+        width: 100%;
+    }
+
+    .portada--inicio {
+        min-height: 26rem;
+    }
+
+    .navegacion-principal {
+        padding: 0.8rem 1.5rem;
+    }
+
+    .navegacion-principal ul {
+        gap: var(--space-2) var(--space-5);
+    }
+
+    .enlace-nav {
+        font-size: 1.05rem;
+    }
+
+    .fila-columnas-iguales .columna,
+    .columna-principal,
+    .columna-lateral {
+        flex: 1 1 100%;
+    }
+
+    .fila-columnas-iguales .columna {
+        min-height: 0;
+    }
+
+    .pie-sitio {
+        gap: 3rem;
+        padding: 3.5rem 1.5rem 3rem;
+    }
+
+    .pie-superior {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .pie-enlaces {
+        width: 100%;
+        gap: 0.5rem 4rem;
+    }
+
+    .pie-contacto {
+        width: 100%;
+        font-size: 1.15rem;
+    }
+}
