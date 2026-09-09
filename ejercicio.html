@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rafael Lozano-Hemmer — Ejercicio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <div class="contenedor-principal">
+        <header class="encabezado-sitio">
+            <div class="marca">Rafael Lozano-Hemmer</div>
+            <nav class="navegacion-principal">
+                <ul>
+                    <li><a href="index.html" class="enlace-nav">Inicio</a></li>
+                    <li><a href="obras.html" class="enlace-nav">Obras</a></li>
+                    <li><a href="ejercicio.html" class="enlace-nav activo">Ejercicio</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="area-contenido">
+            <section class="seccion-ejercicio">
+                <h1>Ejercicio: consumo de las luces móviles</h1>
+                <p class="instrucciones">
+                    Este ejercicio calcula el consumo eléctrico diario de las luces móviles
+                    que usa cada obra de Rafael Lozano-Hemmer. Primero completá los datos
+                    generales (consumo por hora de cada luz y costo del kWh) y la cantidad
+                    de obras a cargar. Después vas a poder cargar, obra por obra, su nombre,
+                    la cantidad de luces móviles y las horas de funcionamiento por día.
+                    Cuando termines de cargar todas las obras se habilita el botón
+                    "Calcular resultados". Al final vas a poder usar "Reiniciar" para volver
+                    a empezar.
+                </p>
+
+                <form class="formulario-ejercicio" id="formulario-ejercicio">
+                    <fieldset class="bloque-datos-generales">
+                        <legend>Datos generales</legend>
+
+                        <label for="cantidad-obras">Cantidad de obras a cargar</label>
+                        <input type="number" id="cantidad-obras" name="cantidad-obras" min="1" required>
+
+                        <label for="consumo-por-luz">Consumo por hora de cada luz móvil (kWh)</label>
+                        <input type="number" id="consumo-por-luz" name="consumo-por-luz" min="0" step="0.01" required>
+
+                        <label for="costo-kwh">Costo por kWh</label>
+                        <input type="number" id="costo-kwh" name="costo-kwh" min="0" step="0.01" required>
+
+                        <button type="button" id="btn-iniciar-carga">Comenzar carga de obras</button>
+                    </fieldset>
+
+                    <fieldset class="bloque-obras" id="bloque-obras">
+                        <legend>Datos de cada obra</legend>
+                        <div class="campos-obras" id="campos-obras"></div>
+                    </fieldset>
+
+                    <div class="bloque-acciones">
+                        <button type="button" id="btn-calcular" disabled>Calcular resultados</button>
+                        <button type="button" id="btn-reiniciar" disabled>Reiniciar</button>
+                    </div>
+                </form>
+
+                <div class="resultados" id="resultados"></div>
+            </section>
+        </main>
+
+        <footer class="pie-sitio">
+            <p>Para contactarse escribir a <a href="mailto:rafael@artedigital.com">rafael@artedigital.com</a></p>
+        </footer>
+    </div>
+
+</body>
+</html>
