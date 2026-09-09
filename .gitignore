@@ -1,0 +1,7 @@
+# Configuración local de Claude Code (no forma parte de la entrega)
+.claude/
+CLAUDE.md
+PLAN.md
+
+# Sistema
+.DS_Store
