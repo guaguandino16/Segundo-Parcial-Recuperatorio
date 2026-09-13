@@ -107,7 +107,7 @@ body {
     text-align: center;
     background-image:
         linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.75) 100%),
-        url('../img/lozano-hemmer-9.jpg');
+        url('../img/lozano-hemmer-3.jpg');
     background-size: cover;
     background-position: center;
 }
@@ -249,6 +249,38 @@ body {
     max-width: none;
     text-align: center;
     margin: 0;
+}
+
+/* ==========================================================================
+   DATO CURIOSO AL AZAR
+   ========================================================================== */
+.dato-curioso {
+    align-self: center;
+    width: 100%;
+    max-width: 34rem;
+    text-align: center;
+    margin: var(--space-7) 0 0;
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-borde-oscuro);
+}
+
+.dato-curioso-etiqueta {
+    font-family: var(--fuente-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    color: var(--color-texto-claro);
+    opacity: 0.55;
+    margin: 0 0 var(--space-2);
+}
+
+.dato-curioso-texto {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--color-texto-claro);
+    margin: 0 0 var(--space-4);
+    min-height: 3.2rem;
 }
 
 /* ==========================================================================
@@ -402,76 +434,119 @@ body {
     padding-left: var(--space-1);
 }
 
-.seccion-galeria h2 {
+.galeria-cabecera {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+}
+
+.galeria-cabecera h2 {
     font-family: var(--fuente-display);
     font-weight: 600;
     font-size: clamp(1.3rem, 2vw, 1.75rem);
     letter-spacing: -0.02em;
     color: var(--color-blanco);
-    margin: 0 0 var(--space-5);
+    margin: 0;
 }
 
-.galeria-obras {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.84rem;
-    min-height: 6rem;
-}
-
-.galeria-obras:empty::before {
-    content: "Galería en construcción — se genera con JavaScript en la próxima fase.";
+.galeria-indicaciones {
     color: var(--color-texto-oscuro);
     font-size: 0.9rem;
-    font-style: italic;
+    margin: 0 0 var(--space-5);
+    max-width: none;
 }
 
-.obra-card {
+.boton-claro {
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+    border-color: var(--color-blanco);
+}
+
+.boton-claro:disabled {
+    background-color: transparent;
+    color: var(--color-texto-oscuro);
+    border-color: var(--color-borde-claro);
+}
+
+/* ==========================================================================
+   CARRUSEL DE OBRAS (galería generada con JS)
+   ========================================================================== */
+.carrusel-obras {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+}
+
+.carrusel-flecha {
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 3rem;
+    padding: 0;
+    font-size: 1.5rem;
+    line-height: 1;
+    border-radius: 50%;
+}
+
+.carrusel-obra {
+    flex: 1 1 auto;
     display: flex;
     flex-direction: column;
-    flex: 1 1 15rem;
     overflow: hidden;
     background-color: var(--color-tarjeta);
     border: 1px solid var(--color-borde-claro);
     border-radius: var(--radio-tarjeta);
-    transition: border-color var(--dur-base) var(--ease-salida), transform var(--dur-base) var(--ease-salida);
 }
 
-.obra-card:hover {
-    border-color: rgba(255, 255, 255, 0.24);
-    transform: translateY(-0.25rem);
-}
-
-.obra-card img {
+.carrusel-obra img {
     display: block;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 16 / 9;
     object-fit: cover;
+    transition: aspect-ratio var(--dur-base) var(--ease-salida);
 }
 
-.obra-info {
+.carrusel-info {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: var(--space-2);
-    padding: 1.1rem 1.3rem;
+    padding: 1.3rem 1.6rem;
 }
 
-.obra-info h3 {
+.carrusel-info h3 {
     font-family: var(--fuente-display);
     font-weight: 600;
-    font-size: 1rem;
-    line-height: 1.2;
+    font-size: 1.2rem;
     color: var(--color-blanco);
     margin: 0;
 }
 
-.obra-info p {
+.carrusel-info p {
     font-family: var(--fuente-display);
     font-style: italic;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--color-acento);
     margin: 0;
-    max-width: none;
+    transition: color var(--dur-base) var(--ease-salida);
+}
+
+.carrusel-contador {
+    text-align: center;
+    color: var(--color-texto-oscuro);
+    font-size: 0.9rem;
+    margin: var(--space-3) 0 0;
+}
+
+/* Funcionalidad de cambio de diseño: imagen más chica y otro color de año */
+.carrusel-obras--compacta .carrusel-obra img {
+    aspect-ratio: 4 / 3;
+}
+
+.carrusel-obras--compacta .carrusel-info p {
+    color: #ff9d5c;
 }
 
 /* ==========================================================================
@@ -549,6 +624,29 @@ body {
     font-size: 0.9rem;
 }
 
+.campo-obra-nueva {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.lista-obras-cargadas {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    margin: var(--space-3) 0 0;
+    padding: 0;
+}
+
+.lista-obras-cargadas li {
+    font-size: 0.9rem;
+    color: #3a3b42;
+    background-color: var(--color-claro);
+    border-radius: var(--radio-md);
+    padding: var(--space-2) var(--space-3);
+}
+
 .bloque-acciones {
     display: flex;
     flex-wrap: wrap;
@@ -600,52 +698,16 @@ button:disabled {
 .pie-sitio {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 6.25rem;
     background-color: var(--color-claro);
     color: var(--color-texto-claro);
     padding: 5.9rem 1.7rem 7.5rem;
-    /* contenedor de consulta: el tamaño de la firma se calcula en cqw
-       (relativo al ancho real del pie), no en vw (relativo al viewport) —
-       así nunca se desborda aunque el contenedor tenga max-width */
-    container-type: inline-size;
-}
-
-.pie-superior {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--space-5);
-    padding: 0 1rem;
-}
-
-.pie-enlaces {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.57rem 3.75rem;
-    width: 21rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.pie-enlaces li {
-    flex: 0 0 5rem;
-}
-
-.pie-enlaces a {
-    color: var(--color-texto-claro);
-    text-decoration: none;
-    font-size: 1.35rem;
-    transition: opacity var(--dur-rapida) var(--ease-salida);
-}
-
-.pie-enlaces a:hover {
-    opacity: 0.6;
+    text-align: center;
 }
 
 .pie-contacto {
-    width: 17.86rem;
+    max-width: 17.86rem;
     font-size: 1.6rem;
     line-height: 1.25;
     margin: 0;
@@ -653,35 +715,6 @@ button:disabled {
 
 .pie-contacto a {
     color: var(--color-texto-claro);
-}
-
-.pie-firma {
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    font-family: var(--fuente-display);
-    line-height: 0.78;
-    margin: 0;
-}
-
-.pie-firma-nombre {
-    font-weight: 700;
-    font-style: italic;
-    font-size: clamp(1.75rem, 11cqw, 7rem);
-    letter-spacing: -0.02em;
-    white-space: nowrap;
-}
-
-.pie-firma-apellido {
-    font-weight: 900;
-    /* un poco por debajo del ajuste exacto (~30.6cqw) a propósito: mejor
-       un par de puntos de aire a la derecha que arriesgar un recorte por
-       diferencias de métricas de fuente entre navegadores */
-    font-size: 28cqw;
-    line-height: 0.78;
-    letter-spacing: -0.05em;
-    text-transform: uppercase;
-    white-space: nowrap;
 }
 
 /* ==========================================================================
@@ -733,16 +766,6 @@ button:disabled {
     .pie-sitio {
         gap: 3rem;
         padding: 3.5rem 1.5rem 3rem;
-    }
-
-    .pie-superior {
-        flex-direction: column;
-        padding: 0;
-    }
-
-    .pie-enlaces {
-        width: 100%;
-        gap: 0.5rem 4rem;
     }
 
     .pie-contacto {

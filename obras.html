@@ -68,70 +68,40 @@
                 </section>
 
                 <section class="banda-oscura seccion-galeria">
-                    <h2>Galería de obras</h2>
-                    <div class="galeria-obras" id="galeria-obras">
-                        <article class="obra-card">
-                            <img src="img/lozano-hemmer-4.jpg" alt="Fotografía de la instalación Body Movies">
-                            <div class="obra-info">
-                                <h3>Body Movies</h3>
-                                <p>2001</p>
-                            </div>
-                        </article>
-                        <article class="obra-card">
-                            <img src="img/lozano-hemmer-5.jpg" alt="Fotografía de la instalación Pulse Room">
-                            <div class="obra-info">
-                                <h3>Pulse Room</h3>
-                                <p>2006</p>
-                            </div>
-                        </article>
-                        <article class="obra-card">
-                            <img src="img/lozano-hemmer-6.jpg" alt="Fotografía de la instalación Recorder">
-                            <div class="obra-info">
-                                <h3>Recorder</h3>
-                                <p>2011</p>
-                            </div>
-                        </article>
-                        <article class="obra-card">
-                            <img src="img/lozano-hemmer-7.jpg" alt="Fotografía de la instalación 33 Questions per Minute">
-                            <div class="obra-info">
-                                <h3>33 Questions per Minute</h3>
-                                <p>2000</p>
-                            </div>
-                        </article>
-                        <article class="obra-card">
-                            <img src="img/lozano-hemmer-8.jpg" alt="Fotografía de la instalación Please Empty Your Pockets">
-                            <div class="obra-info">
-                                <h3>Please Empty Your Pockets</h3>
-                                <p>2010</p>
-                            </div>
-                        </article>
-                        <article class="obra-card">
-                            <img src="img/lozano-hemmer-9.jpg" alt="Fotografía de la instalación Vectorial Elevation">
-                            <div class="obra-info">
-                                <h3>Vectorial Elevation</h3>
-                                <p>1999</p>
-                            </div>
-                        </article>
+                    <div class="galeria-cabecera">
+                        <h2>Galería de obras</h2>
+                        <button type="button" id="btn-cambiar-diseno" class="boton-claro">Cambiar diseño</button>
                     </div>
+
+                    <p class="galeria-indicaciones">
+                        Usá las flechas para recorrer las obras. El botón "Cambiar diseño"
+                        alterna el tamaño de la imagen y el color del año.
+                    </p>
+
+                    <div class="carrusel-obras" id="carrusel-obras">
+                        <button type="button" class="carrusel-flecha boton-claro" id="obra-anterior" aria-label="Obra anterior">‹</button>
+
+                        <article class="carrusel-obra">
+                            <img id="carrusel-imagen" src="" alt="">
+                            <div class="carrusel-info">
+                                <h3 id="carrusel-nombre"></h3>
+                                <p id="carrusel-anio"></p>
+                            </div>
+                        </article>
+
+                        <button type="button" class="carrusel-flecha boton-claro" id="obra-siguiente" aria-label="Obra siguiente">›</button>
+                    </div>
+
+                    <p class="carrusel-contador" id="carrusel-contador"></p>
                 </section>
             </article>
         </main>
 
-        <footer class="pie-sitio" id="contacto">
-            <div class="pie-superior">
-                <ul class="pie-enlaces">
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="ejercicio.html">Ejercicio</a></li>
-                    <li><a href="obras.html">Obras</a></li>
-                    <li><a href="mailto:rafael@artedigital.com">Contacto</a></li>
-                </ul>
-                <p class="pie-contacto">Para contactarse escribir a <a href="mailto:rafael@artedigital.com">rafael@artedigital.com</a></p>
-            </div>
-            <p class="pie-firma">
-                <span class="pie-firma-nombre">Rafael Lozano</span>
-                <span class="pie-firma-apellido">Hemmer</span>
-            </p>
-        </footer>
+        <script src="js/galeria.js"></script>
+
+        <section class="pie-sitio" id="contacto">
+            <p class="pie-contacto">Para contactarse escribir a <a href="mailto:rafael@artedigital.com">rafael@artedigital.com</a></p>
+        </section>
     </div>
 
 </body>
